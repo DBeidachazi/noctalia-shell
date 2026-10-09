@@ -517,7 +517,7 @@ ColumnLayout {
               onEntered: TooltipService.show(qsRevisionText, I18n.tr("panels.about.view-commit"))
               onExited: TooltipService.hide()
               onClicked: {
-                Quickshell.execDetached(["xdg-open", "https://github.com/noctalia-dev/noctalia-qs/commit/" + root.qsRevision]);
+                Quickshell.execDetached(["xdg-open", "https://github.com/DBeidachazi/noctalia-qs/commit/" + root.qsRevision]);
               }
             }
           }

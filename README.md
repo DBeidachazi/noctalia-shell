@@ -28,6 +28,7 @@
 
 - **Qt 6.12 compatibility.** Qt 6.12 adds a built-in `QtQuick/Color` singleton that shadows Noctalia's own `Color` singleton. Under Qt 6.12, every `Color.*` call resolved to Qt's type, so all colors became `undefined` and the UI lost its styling (log: `Property 'resolveColorKey' of object QQuickColor is not a function`). All `import QtQuick` / `import QtQuick.Window` statements are now pinned to `6.11`, which hides the new singleton.
 - The About page checks this fork for new releases instead of upstream, so it no longer suggests "updating" to v5.
+- Uses the community-maintained [noctalia-qs fork](https://github.com/DBeidachazi/noctalia-qs) (0.0.13+), which builds with Qt 6.12.
 - Removed upstream-only CI workflows, including the one that auto-closed every v4 issue.
 
 ---
@@ -50,7 +51,7 @@ The AUR package is built from [`packaging/aur/PKGBUILD`](./packaging/aur/PKGBUIL
 
 ### Manual installation
 
-Install [noctalia-qs](https://github.com/noctalia-dev/noctalia-qs) (AUR: `noctalia-qs`), then:
+Install [noctalia-qs](https://github.com/DBeidachazi/noctalia-qs) (AUR: `noctalia-qs`), then:
 
 ```bash
 git clone -b legacy-v4 https://github.com/DBeidachazi/noctalia-shell ~/.config/quickshell/noctalia-shell
@@ -73,7 +74,7 @@ Note that the plugin manager may overwrite these edits when it updates a plugin.
 ## 📋 Requirements
 
 - Wayland compositor (see supported compositors below)
-- Quickshell: [noctalia-qs](https://github.com/noctalia-dev/noctalia-qs)
+- Quickshell: [noctalia-qs](https://github.com/DBeidachazi/noctalia-qs) 0.0.13 or newer (AUR: `noctalia-qs`). Upstream noctalia-qs is archived, and its last release (0.0.12) does not build with Qt 6.12.
 - Qt 6.11 or newer
 
 ---
