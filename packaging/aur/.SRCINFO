@@ -1,0 +1,26 @@
+pkgbase = noctalia-legacy-v4
+	pkgdesc = Community-maintained legacy Noctalia v4 desktop shell for Wayland, built with Quickshell
+	pkgver = 4.7.8
+	pkgrel = 1
+	url = https://github.com/DBeidachazi/noctalia-shell
+	arch = any
+	license = MIT
+	depends = noctalia-qs
+	depends = qt6-declarative>=6.11
+	depends = qt6-multimedia
+	depends = imagemagick
+	depends = brightnessctl
+	depends = ffmpeg
+	depends = python
+	depends = wlr-randr
+	optdepends = cliphist: For clipboard history support
+	optdepends = wlsunset: For supporting NightLight
+	optdepends = power-profiles-daemon: For power profile management
+	optdepends = ddcutil: For external display brightness control
+	provides = noctalia-shell
+	conflicts = noctalia-shell
+	conflicts = noctalia-shell-git
+	source = noctalia-legacy-v4-4.7.8.tar.gz::https://github.com/DBeidachazi/noctalia-shell/archive/refs/tags/v4.7.8.tar.gz
+	sha256sums = SKIP
+
+pkgname = noctalia-legacy-v4

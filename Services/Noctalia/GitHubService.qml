@@ -221,7 +221,7 @@ Singleton {
     property bool fetchSucceeded: false
     property bool wasRateLimited: false
 
-    command: ["curl", "-s", "https://api.github.com/repos/noctalia-dev/noctalia-shell/releases/latest"]
+    command: ["curl", "-s", "https://api.github.com/repos/DBeidachazi/noctalia-shell/releases/latest"]
 
     stdout: StdioCollector {
       onStreamFinished: {

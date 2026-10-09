@@ -1,9 +1,11 @@
-# Noctalia Shell
+# Noctalia Legacy v4
 
-> [!WARNING]
-> This branch contains Noctalia v4, a legacy and unmaintained version. It is no longer developed, supported, or receiving fixes. **Do not use v4 for new installations.**
+> [!NOTE]
+> This is a **community-maintained fork of Noctalia v4**, based on upstream's [`legacy-v4`](https://github.com/noctalia-dev/noctalia/tree/legacy-v4) branch (last upstream release: v4.7.7).
+> Upstream no longer develops or supports v4. This fork only keeps v4 running on current Arch Linux (mainly Qt updates). It does **not** add new features.
 >
-> **[Noctalia v5](https://docs.noctalia.dev/noctalia/getting-started/installation/)** is the stable, finished, and actively supported version. Use v5 instead. Its installation instructions, documentation, and plugins are not compatible with this v4 branch.
+> Please report problems with this fork **here**, not to the upstream Noctalia project.
+> If you are starting fresh, consider [Noctalia v5](https://docs.noctalia.dev/noctalia/getting-started/installation/), which is actively maintained upstream.
 
 **_quiet by design_**
 
@@ -11,25 +13,74 @@
   <img src="https://assets.noctalia.dev/noctalia-logo.svg?v=2" alt="Noctalia Logo" style="width: 192px" />
 </p>
 
-<p><br/></p>
-
 <p align="center">
-  <a href="https://github.com/noctalia-dev/noctalia-shell/commits">
-    <img src="https://img.shields.io/github/last-commit/noctalia-dev/noctalia-shell?style=for-the-badge&labelColor=0C0D11&color=A8AEFF&logo=git&logoColor=FFFFFF&label=commit" alt="Last commit" />
+  <a href="https://aur.archlinux.org/packages/noctalia-legacy-v4">
+    <img src="https://img.shields.io/aur/version/noctalia-legacy-v4?style=for-the-badge&labelColor=0C0D11&color=A8AEFF&logo=archlinux&logoColor=FFFFFF&label=AUR" alt="AUR version" />
   </a>
-  <a href="https://github.com/noctalia-dev/noctalia-shell/stargazers">
-    <img src="https://img.shields.io/github/stars/noctalia-dev/noctalia-shell?style=for-the-badge&labelColor=0C0D11&color=A8AEFF&logo=github&logoColor=FFFFFF" alt="GitHub stars" />
-  </a>
-  <a href="https://discord.noctalia.dev">
-    <img src="https://img.shields.io/badge/discord-A8AEFF?style=for-the-badge&labelColor=0C0D11&logo=discord&logoColor=FFFFFF" alt="Discord" />
+  <a href="https://github.com/DBeidachazi/noctalia-shell/commits/legacy-v4">
+    <img src="https://img.shields.io/github/last-commit/DBeidachazi/noctalia-shell/legacy-v4?style=for-the-badge&labelColor=0C0D11&color=A8AEFF&logo=git&logoColor=FFFFFF&label=commit" alt="Last commit" />
   </a>
 </p>
 
 ---
 
-## About this legacy branch
+## Changes compared to upstream v4.7.7
 
-This repository contains the archived Noctalia v4 desktop shell for Wayland. The feature list below describes the historical v4 implementation and is retained for existing users and reference only.
+- **Qt 6.12 compatibility.** Qt 6.12 adds a built-in `QtQuick/Color` singleton that shadows Noctalia's own `Color` singleton. Under Qt 6.12, every `Color.*` call resolved to Qt's type, so all colors became `undefined` and the UI lost its styling (log: `Property 'resolveColorKey' of object QQuickColor is not a function`). All `import QtQuick` / `import QtQuick.Window` statements are now pinned to `6.11`, which hides the new singleton.
+- The About page checks this fork for new releases instead of upstream, so it no longer suggests "updating" to v5.
+- Removed upstream-only CI workflows, including the one that auto-closed every v4 issue.
+
+---
+
+## 📦 Installation
+
+### Arch Linux (AUR)
+
+```bash
+yay -S noctalia-legacy-v4   # or paru -S noctalia-legacy-v4
+```
+
+The package installs to `/etc/xdg/quickshell/noctalia-shell`, the same path as the old `noctalia-shell` package. It therefore **replaces** `noctalia-shell` (they conflict). Your existing configuration in `~/.config/noctalia` keeps working unchanged. Start it as before:
+
+```bash
+qs -c noctalia-shell
+```
+
+The AUR package is built from [`packaging/aur/PKGBUILD`](./packaging/aur/PKGBUILD) in this repository.
+
+### Manual installation
+
+Install [noctalia-qs](https://github.com/noctalia-dev/noctalia-qs) (AUR: `noctalia-qs`), then:
+
+```bash
+git clone -b legacy-v4 https://github.com/DBeidachazi/noctalia-shell ~/.config/quickshell/noctalia-shell
+qs -c noctalia-shell
+```
+
+### Third-party v4 plugins
+
+Plugins in `~/.config/noctalia/plugins` hit the same Qt 6.12 `Color` clash if they use `Color.*` together with a plain `import QtQuick`. Pin their imports in the same way:
+
+```bash
+find ~/.config/noctalia/plugins -name '*.qml' -exec sed -i -E \
+  's/^(\s*)import QtQuick\s*$/\1import QtQuick 6.11/; s/^(\s*)import QtQuick\.Window\s*$/\1import QtQuick.Window 6.11/' {} +
+```
+
+Note that the plugin manager may overwrite these edits when it updates a plugin.
+
+---
+
+## 📋 Requirements
+
+- Wayland compositor (see supported compositors below)
+- Quickshell: [noctalia-qs](https://github.com/noctalia-dev/noctalia-qs)
+- Qt 6.11 or newer
+
+---
+
+## About
+
+Noctalia v4 is a desktop shell for Wayland, built on Quickshell.
 
 **✨ Key Features:**
 - 🪟 Native support for Niri, Hyprland, Sway, Scroll, Labwc and MangoWC
@@ -62,19 +113,6 @@ https://github.com/user-attachments/assets/bf46f233-8d66-439a-a1ae-ab0446270f2d
 ![Light 3](/Assets/Screenshots/noctalia-light-3.png)
 
 </details>
-
----
-
-## 📋 Requirements
-
-- Wayland compositor (see supported compositors below)
-- Quickshell: [noctalia-qs](https://github.com/noctalia-dev/noctalia-qs)
-
----
-
-## Existing v4 users
-
-Existing v4 installations may continue to work, but compatibility with current compositors, distributions, plugins, and external services is not maintained. New users should [install Noctalia v5](https://docs.noctalia.dev/noctalia/getting-started/installation/) instead.
 
 ---
 
@@ -113,20 +151,19 @@ Some features go beyond what a desktop shell can or should do. These are typical
 - **Removable drive mounting**: handled by system services like udisks and desktop applications
 - **Screen mirroring/casting**: managed by the compositor or dedicated tools
 
-We appreciate feature suggestions, but if a request falls into this category, it's likely outside what Noctalia can provide. When in doubt, feel free to ask in our [Discord](https://discord.noctalia.dev).
+We appreciate feature suggestions, but if a request falls into this category, it's likely outside what Noctalia can provide. 
 
 ---
 
 ## 💜 Credits
 
-A heartfelt thank you to our incredible community of [**contributors**](https://github.com/noctalia-dev/noctalia-shell/graphs/contributors). We are immensely grateful for their dedicated participation and the constructive feedback they provided, which helped shape and improve Noctalia v4.
+Noctalia is made by [noctalia-dev](https://github.com/noctalia-dev) and its [**contributors**](https://github.com/noctalia-dev/noctalia/graphs/contributors). This fork only keeps the v4 code running; all credit for Noctalia itself goes to them.
 
 ---
 
 ## ☕ Donations
 
-While all donations are greatly appreciated, they are completely voluntary.
-Thank you to everyone who supports the project! 💜
+If you want to support Noctalia, donate to the upstream project:
 
 <p>
   <a href="https://www.buymeacoffee.com/noctalia">
@@ -142,13 +179,3 @@ Thank you to everyone who supports the project! 💜
 ## 📄 License
 
 MIT License - see [LICENSE](./LICENSE) for details.
-
----
-
-## ⭐ Star History
-
-<p align="center">
-  <a href="https://github.com/noctalia-dev/noctalia-shell/stargazers">
-    <img src="https://api.noctalia.dev/stars" alt="Star History" />
-  </a>
-</p>

@@ -422,7 +422,7 @@ ColumnLayout {
               onExited: TooltipService.hide()
               onClicked: {
                 if (root.commitInfo) {
-                  Quickshell.execDetached(["xdg-open", "https://github.com/noctalia-dev/noctalia-shell/commit/" + root.commitInfo]);
+                  Quickshell.execDetached(["xdg-open", "https://github.com/DBeidachazi/noctalia-shell/commit/" + root.commitInfo]);
                 }
               }
             }

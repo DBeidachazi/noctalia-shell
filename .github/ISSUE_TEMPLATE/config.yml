@@ -1,8 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Noctalia Discord
-    url: https://discord.noctalia.dev
-    about: Join the community for support, discussions, and quick help.
-  - name: Noctalia Docs
-    url: https://docs.noctalia.dev
-    about: Browse the documentation, guides, and frequently asked questions.
+  - name: Noctalia v5 (upstream)
+    url: https://github.com/noctalia-dev/noctalia
+    about: This repository only maintains legacy v4. For v5, use the upstream project.

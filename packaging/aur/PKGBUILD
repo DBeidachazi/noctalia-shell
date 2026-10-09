@@ -1,0 +1,40 @@
+# Maintainer: DBeidachazi <https://github.com/DBeidachazi>
+# Based on the noctalia-shell PKGBUILD by Kevin <github@kev314.dev> and Lysec <itslysec@gmail.com>
+pkgname=noctalia-legacy-v4
+_pkgname=noctalia-shell
+pkgver=4.7.8
+pkgrel=1
+pkgdesc="Community-maintained legacy Noctalia v4 desktop shell for Wayland, built with Quickshell"
+arch=('any')
+url="https://github.com/DBeidachazi/noctalia-shell"
+license=('MIT')
+depends=(
+  'noctalia-qs'
+  'qt6-declarative>=6.11'
+  'qt6-multimedia'
+  'imagemagick'
+  'brightnessctl'
+  'ffmpeg'
+  'python'
+  'wlr-randr'
+)
+optdepends=(
+  'cliphist: For clipboard history support'
+  'wlsunset: For supporting NightLight'
+  'power-profiles-daemon: For power profile management'
+  'ddcutil: For external display brightness control'
+)
+provides=('noctalia-shell')
+conflicts=('noctalia-shell' 'noctalia-shell-git')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+package() {
+  cd "$srcdir/$_pkgname-$pkgver"
+
+  install -dm755 "$pkgdir/etc/xdg/quickshell/noctalia-shell"
+  cp -r ./* "$pkgdir/etc/xdg/quickshell/noctalia-shell/"
+  rm -rf "$pkgdir/etc/xdg/quickshell/noctalia-shell/packaging"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
