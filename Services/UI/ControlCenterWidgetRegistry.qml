@@ -1,6 +1,6 @@
 pragma Singleton
 
-import QtQuick
+import QtQuick 6.11
 import Quickshell
 import qs.Commons
 import qs.Modules.Panels.ControlCenter.Widgets

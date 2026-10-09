@@ -1,4 +1,4 @@
-import QtQuick
+import QtQuick 6.11
 import QtQuick.Controls
 import QtQuick.Templates as T
 import qs.Commons
@@ -192,7 +192,7 @@ Item {
       return;
 
     Qt.createQmlObject(`
-      import QtQuick
+      import QtQuick 6.11
       import qs.Commons
       Rectangle {
         x: 0
@@ -217,7 +217,7 @@ Item {
     `, root, "topGradient");
 
     Qt.createQmlObject(`
-      import QtQuick
+      import QtQuick 6.11
       import qs.Commons
       Rectangle {
         x: 0

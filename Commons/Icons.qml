@@ -1,6 +1,6 @@
 pragma Singleton
 
-import QtQuick
+import QtQuick 6.11
 import QtQuick.Controls
 import Quickshell
 import qs.Commons
@@ -60,7 +60,7 @@ Singleton {
 
     // Create new loader with cache-busting URL
     currentFontLoader = Qt.createQmlObject(`
-                                           import QtQuick
+                                           import QtQuick 6.11
                                            FontLoader {
                                            source: "${cacheBustingPath}"
                                            }

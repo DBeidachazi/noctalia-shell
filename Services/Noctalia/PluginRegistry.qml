@@ -1,6 +1,6 @@
 pragma Singleton
 
-import QtQuick
+import QtQuick 6.11
 import Quickshell
 import Quickshell.Io
 import "../../Helpers/sha256.js" as Crypto
@@ -211,7 +211,7 @@ Singleton {
   // Ensure plugins directory exists
   function ensurePluginsDirectory() {
     var mkdirProcess = Qt.createQmlObject(`
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["mkdir", "-p", "${root.pluginsDir}"]
@@ -233,7 +233,7 @@ Singleton {
   // Ensure plugins.json exists (create minimal one if it doesn't)
   function ensurePluginsFile() {
     var checkProcess = Qt.createQmlObject(`
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["sh", "-c", "test -f '${root.pluginsFile}' || echo '{\\"version\\":${root.currentVersion},\\"states\\":{},\\"sources\\":[]}' > '${root.pluginsFile}'"]
@@ -255,7 +255,7 @@ Singleton {
     Logger.i("PluginRegistry", "Scanning plugin folder:", root.pluginsDir);
 
     var scanProcess = Qt.createQmlObject(`
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["sh", "-c", "for d in '${root.pluginsDir}'/*/; do [ -d \\"$d\\" ] || continue; [ -f \\"$d/manifest.json\\" ] || continue; echo \\"@@PLUGIN@@$(basename \\"$d\\")\\" ; cat \\"$d/manifest.json\\" ; done"]
@@ -315,7 +315,7 @@ Singleton {
     var manifestPath = root.pluginsDir + "/" + pluginId + "/manifest.json";
 
     var catProcess = Qt.createQmlObject(`
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["cat", "${manifestPath}"]

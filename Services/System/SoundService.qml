@@ -1,6 +1,6 @@
 pragma Singleton
 
-import QtQuick
+import QtQuick 6.11
 import Quickshell
 import qs.Commons
 
@@ -22,7 +22,7 @@ Singleton {
     // Test if QtMultimedia is available by trying to create a simple component
     try {
       var testComponent = Qt.createQmlObject(`
-        import QtQuick
+        import QtQuick 6.11
         import QtMultimedia
         Item {}
       `, root, "MultimediaTest");
@@ -86,7 +86,7 @@ Singleton {
     const loopsValue = repeat ? "MediaPlayer.Infinite" : "1";
     const escapedPath = resolvedPath.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
     const playerQml = `
-      import QtQuick
+      import QtQuick 6.11
       import QtMultimedia
       import Quickshell
       import qs.Commons

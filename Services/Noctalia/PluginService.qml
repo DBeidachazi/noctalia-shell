@@ -1,6 +1,6 @@
 pragma Singleton
 
-import QtQuick
+import QtQuick 6.11
 import Quickshell
 import Quickshell.Io
 import qs.Commons
@@ -512,7 +512,7 @@ Singleton {
     var pluginDir = PluginRegistry.getPluginDir(compositeKey);
 
     var removeProcess = Qt.createQmlObject(`
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["rm", "-rf", "${pluginDir}"]
@@ -975,7 +975,7 @@ Singleton {
     var pluginDir = PluginRegistry.getPluginDir(pluginId);
 
     var api = Qt.createQmlObject(`
-      import QtQuick
+      import QtQuick 6.11
 
       QtObject {
         // Plugin-specific
@@ -1220,7 +1220,7 @@ Singleton {
     var translationFile = pluginDir + "/i18n/" + language + ".json";
 
     var readProcess = Qt.createQmlObject(`
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["cat", "${translationFile}"]
@@ -1257,7 +1257,7 @@ Singleton {
     var settingsFile = PluginRegistry.getPluginSettingsFile(pluginId);
 
     var readProcess = Qt.createQmlObject(`
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["cat", "${settingsFile}"]
@@ -1311,7 +1311,7 @@ Singleton {
   // Load manifest from file
   function loadManifest(manifestPath, callback) {
     var readProcess = Qt.createQmlObject(`
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["cat", "${manifestPath}"]
@@ -1802,7 +1802,7 @@ Singleton {
 
     // Create a debounce timer for this plugin
     var debounceTimer = Qt.createQmlObject(`
-      import QtQuick
+      import QtQuick 6.11
       Timer {
         property string targetPluginId: ""
         property var reloadCallback: null
@@ -1831,7 +1831,7 @@ Singleton {
 
     // Only watch .qml and .js files, also follow symlinks since some of the plugins might have been symlinked in.
     var qmlWatcher = Qt.createQmlObject(`
-        import QtQuick
+        import QtQuick 6.11
         import Quickshell.Io
 
         import qs.Commons
@@ -1875,7 +1875,7 @@ Singleton {
 
     // Create a separate debounce timer for translation reloads (lighter weight)
     var translationDebounceTimer = Qt.createQmlObject(`
-      import QtQuick
+      import QtQuick 6.11
       Timer {
         property string targetPluginId: ""
         property var reloadCallback: null

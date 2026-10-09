@@ -1,6 +1,6 @@
 pragma Singleton
 
-import QtQuick
+import QtQuick 6.11
 import Quickshell
 import Quickshell.Io
 import "../Helpers/QtObj2JS.js" as QtObj2JS

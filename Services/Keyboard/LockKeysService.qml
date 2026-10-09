@@ -2,7 +2,7 @@ pragma Singleton
 import Qt.labs.folderlistmodel 2.10
 import QtQml.Models
 
-import QtQuick
+import QtQuick 6.11
 import Quickshell
 import Quickshell.Io
 import qs.Commons

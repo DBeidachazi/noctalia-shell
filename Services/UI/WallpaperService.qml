@@ -1,6 +1,6 @@
 pragma Singleton
 
-import QtQuick
+import QtQuick 6.11
 import Quickshell
 import Quickshell.Io
 import qs.Commons
@@ -1045,7 +1045,7 @@ Singleton {
     var findArgs = ["find", "-L", directory, "-maxdepth", "1", "-mindepth", "1", "-type", "d"];
 
     var processString = `
-    import QtQuick
+    import QtQuick 6.11
     import Quickshell.Io
     Process {
       id: process
@@ -1170,7 +1170,7 @@ Singleton {
 
     // Create Process component inline
     var processString = `
-    import QtQuick
+    import QtQuick 6.11
     import Quickshell.Io
     Process {
       id: process

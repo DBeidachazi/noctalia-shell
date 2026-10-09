@@ -1,6 +1,6 @@
 pragma Singleton
 
-import QtQuick
+import QtQuick 6.11
 import Quickshell
 import qs.Commons
 
@@ -222,7 +222,7 @@ Singleton {
 
     // Use curl or wget to download the file, ensuring directory exists first
     var downloadProcess = Qt.createQmlObject(`
-                                             import QtQuick
+                                             import QtQuick 6.11
                                              import Quickshell.Io
                                              Process {
                                              id: downloadProcess

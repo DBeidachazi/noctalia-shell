@@ -1,6 +1,6 @@
 pragma Singleton
 
-import QtQuick
+import QtQuick 6.11
 import Quickshell
 import Quickshell.Io
 import Quickshell.Wayland
@@ -202,7 +202,7 @@ Singleton {
     const dstEsc = destPath.replace(/'/g, "'\\''");
 
     const processString = `
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["cp", "--", "${srcEsc}", "${dstEsc}"]
@@ -365,7 +365,7 @@ Singleton {
     const downloadCmd = `curl -L -s -o '${tempEsc}' '${urlEsc}' || wget -q -O '${tempEsc}' '${urlEsc}'`;
 
     const processString = `
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["sh", "-c", "${downloadCmd.replace(/"/g, '\\"')}"]
@@ -444,7 +444,7 @@ Singleton {
     runningImageMagickProcesses++;
 
     const processString = `
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["sh", "-c", ""]
@@ -622,7 +622,7 @@ Singleton {
   function getMtime(filePath, callback) {
     const pathEsc = filePath.replace(/'/g, "'\\''");
     const processString = `
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["stat", "-c", "%Y", "${pathEsc}"]
@@ -647,7 +647,7 @@ Singleton {
   function checkFileExists(filePath, callback) {
     const pathEsc = filePath.replace(/'/g, "'\\''");
     const processString = `
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["test", "-f", "${pathEsc}"]
@@ -671,7 +671,7 @@ Singleton {
   function getImageDimensions(filePath, callback) {
     const pathEsc = filePath.replace(/'/g, "'\\''");
     const processString = `
-      import QtQuick
+      import QtQuick 6.11
       import Quickshell.Io
       Process {
         command: ["identify", "-ping", "-format", "%w %h", "${pathEsc}[0]"]

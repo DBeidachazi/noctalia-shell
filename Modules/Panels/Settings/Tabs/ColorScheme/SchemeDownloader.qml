@@ -1,4 +1,4 @@
-import QtQuick
+import QtQuick 6.11
 import QtQuick.Controls
 import QtQuick.Layouts
 import Quickshell
@@ -533,7 +533,7 @@ Popup {
     // Execute download script
     var stderrOutput = "";
     var downloadProcess = Qt.createQmlObject(`
-                                             import QtQuick
+                                             import QtQuick 6.11
                                              import Quickshell.Io
                                              import qs.Commons
                                              Process {
@@ -577,7 +577,7 @@ Popup {
         // Clean up the partially downloaded directory on failure
         var cleanupScript = "rm -rf '" + targetDir + "'";
         var cleanupProcess = Qt.createQmlObject(`
-                                                 import QtQuick
+                                                 import QtQuick 6.11
                                                  import Quickshell.Io
                                                  Process {
                                                  id: cleanupProcess
@@ -644,7 +644,7 @@ Popup {
     var deleteScript = "rm -rf '" + targetDir + "'";
 
     var deleteProcess = Qt.createQmlObject(`
-                                           import QtQuick
+                                           import QtQuick 6.11
                                            import Quickshell.Io
                                            Process {
                                            id: deleteProcess
