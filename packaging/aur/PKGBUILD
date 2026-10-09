@@ -23,11 +23,14 @@ optdepends=(
   'wlsunset: For supporting NightLight'
   'power-profiles-daemon: For power profile management'
   'ddcutil: For external display brightness control'
+  'evolution-data-server: For calendar integration'
+  'python-gobject: For calendar integration'
+  'python-dateutil: For calendar integration'
 )
 provides=('noctalia-shell')
 conflicts=('noctalia-shell' 'noctalia-shell-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('adafda0aa4a47870f02112d2cad93b92aa523c5747d5026e3ecd7189bccaa6f0')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"

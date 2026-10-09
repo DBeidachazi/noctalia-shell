@@ -17,10 +17,13 @@ pkgbase = noctalia-legacy-v4
 	optdepends = wlsunset: For supporting NightLight
 	optdepends = power-profiles-daemon: For power profile management
 	optdepends = ddcutil: For external display brightness control
+	optdepends = evolution-data-server: For calendar integration
+	optdepends = python-gobject: For calendar integration
+	optdepends = python-dateutil: For calendar integration
 	provides = noctalia-shell
 	conflicts = noctalia-shell
 	conflicts = noctalia-shell-git
 	source = noctalia-legacy-v4-4.7.8.tar.gz::https://github.com/DBeidachazi/noctalia-shell/archive/refs/tags/v4.7.8.tar.gz
-	sha256sums = SKIP
+	sha256sums = adafda0aa4a47870f02112d2cad93b92aa523c5747d5026e3ecd7189bccaa6f0
 
 pkgname = noctalia-legacy-v4
